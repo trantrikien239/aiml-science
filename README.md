@@ -1,6 +1,6 @@
-# ailm.science
+# aiml.science
 
-Marketing site for **ml-agents** — an auto-ML agent harness for Claude Code.
+Marketing site for **ml-agents** — an auto-ML agent harness for Claude Code, by AIML.
 
 Built with [Astro](https://astro.build), deployed to GitHub Pages via GitHub Actions on every push to `main`.
 
@@ -13,4 +13,4 @@ npm run dev
 
 ## Deploy
 
-Push to `main`. The `Deploy to GitHub Pages` workflow builds and publishes to https://ailm.science.
+Push to `main`. The `Deploy to GitHub Pages` workflow builds and publishes to https://aiml.science.
