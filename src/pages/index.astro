@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 // Web3Forms access key — public by design; submissions are emailed to the
 // address this key was issued for.
-const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+const WEB3FORMS_KEY = 'b0c03a79-5323-4d3d-8f52-80621e19263c';
 ---
 
 <Layout
@@ -861,14 +861,6 @@ const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
       e.preventDefault();
       const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
       const data = Object.fromEntries(new FormData(form));
-      // Until the Web3Forms key is configured, degrade to a pre-filled email.
-      if (data.access_key === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-        const body = `Hi AIML,\n\nI'd like early access to ml-agents.\n\nName: ${data.name}\nCompany: ${data.company}\nData scale: ${data.data_scale}\nWhat we're modeling: ${data.use_case}\n`;
-        location.href =
-          'mailto:trantrikien239@gmail.com?subject=ml-agents%20early%20access%20request&body=' +
-          encodeURIComponent(body);
-        return;
-      }
       btn.disabled = true;
       status.className = 'form-status';
       status.textContent = 'Sending…';
