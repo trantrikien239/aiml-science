@@ -72,7 +72,7 @@
           <tr>
             <td>Predit's result columns: the prediction (when needed), the chance or confidence and the rank, plus a note on their first header cell, their number formats and one colour-scale rule on the chance cells. Predit recognises its columns later by their header, which starts with "Predit:".</td>
             <td>To give you the results, and to update only Predit's own columns when you run it again</td>
-            <td>Written into your spreadsheet when you click Predict (or Write anyway) and removed again if you click Undo</td>
+            <td>Written into your spreadsheet when you click Predict (or Write anyway) and removed again if you click Remove Predit's columns</td>
           </tr>
         </tbody>
       </table>
@@ -95,7 +95,7 @@
     <ul>
       <li><strong>Reading.</strong> When you open the sidebar and start a prediction, Predit's Apps Script code reads the open sheet and passes the values to the sidebar over Google's own connection.</li>
       <li><strong>Predicting.</strong> The model runs inside the sidebar, on your computer. The rows are held in your browser's memory for the run and are discarded when you close the sidebar. They are never written to browser storage and never sent to us or anyone else.</li>
-      <li><strong>Writing.</strong> Predit writes its result columns into the same sheet, only on rows where the column you chose is blank. If its own check says the results are not reliable or look too good to be true, it asks you first. It never overwrites your own cells, and before writing it checks that the rows have not been sorted or edited since they were read.</li>
+      <li><strong>Writing.</strong> Predit writes its result columns into the same sheet, only on rows where the column you chose is blank. If its own check says the results are not reliable or look too good to be true, it asks you first. With <em>Also fill the blanks</em> unticked, it changes none of your cells. Only if you tick it does it also write its predicted answer into the column you chose, and then only into its empty cells; later it updates or removes only its own guesses there. Before writing it checks that the rows have not been sorted, moved or edited since they were read.</li>
     </ul>
 
     <h2 id="network">5. Every network request Predit makes</h2>
@@ -121,7 +121,7 @@
         <tbody>
           <tr><td>Model and runtime program files (no personal data)</td><td>Your browser's cache for the Predit sidebar</td><td>Until your browser clears it or you clear site data</td></tr>
           <tr><td>Small interface settings, for example that the model has already been downloaded</td><td>Your browser's local storage for the Predit sidebar</td><td>Until you clear site data</td></tr>
-          <tr><td>Predit's result columns, note and colour rule</td><td>Your spreadsheet</td><td>Until you click Undo or delete them</td></tr>
+          <tr><td>Predit's result columns, note and colour rule</td><td>Your spreadsheet</td><td>Until you click Remove Predit's columns or delete them</td></tr>
           <tr><td>Your spreadsheet contents</td><td>Only in your spreadsheet (Google) and, during a run, in your browser's memory</td><td>We keep no copy</td></tr>
           <tr><td>Emails you send to support</td><td>Our support mailbox (Gmail, by Google)</td><td>Up to 24 months after your last message, then deleted</td></tr>
         </tbody>
@@ -168,7 +168,7 @@
     <h2 id="rights">11. Your rights and choices</h2>
     <ul>
       <li><strong>Stop Predit's access:</strong> uninstall it in Google Sheets (<strong>Extensions → Add-ons → Manage add-ons</strong>, then <strong>Options → Uninstall</strong>), and remove its access in your Google Account's <a href="https://support.google.com/accounts/answer/13533235">third-party connections</a>.</li>
-      <li><strong>Remove Predit's columns:</strong> click <strong>Undo</strong> in the sidebar right after a run, or delete the columns whose header starts with "Predit:".</li>
+      <li><strong>Remove Predit's columns:</strong> click <strong>Remove Predit's columns</strong> in the sidebar right after a run, or delete the columns whose header starts with "Predit:".</li>
       <li><strong>Clear downloaded files:</strong> clear site data for <code>googleusercontent.com</code> in your browser settings.</li>
       <li><strong>Questions or requests about your data</strong> (for example about a support email you sent us): write to <a href="mailto:trantrikien239@gmail.com">trantrikien239@gmail.com</a>. We'll answer within 30 days. You may also complain to your data protection authority. In the EU or the UK, that is the authority of the country where you live.</li>
     </ul>

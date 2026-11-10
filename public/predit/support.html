@@ -59,7 +59,7 @@
         <ul>
           <li>use the latest Chrome or Edge, and update your graphics drivers;</li>
           <li>close other heavy tabs while Predit runs;</li>
-          <li>on big sheets Predit learns from a balanced sample of up to 2,000 rows with an answer (fewer without WebGPU) and still predicts every blank row. That is expected and keeps runs manageable on any computer.</li>
+          <li>on big sheets Predit learns from a representative sample of rows with an answer: up to 2,000 with WebGPU and up to 1,500 without it. It uses fewer on sheets with many columns (on WebGPU, roughly above a dozen used columns). On WebGPU it also learns from about 1,800 rows when there are many rows to predict: from roughly 1,300 blank rows on a 10-column sheet, and about half that at 12 columns. It still predicts every blank row. That is expected and keeps big sheets fast on any computer.</li>
         </ul>
       </details>
 
@@ -72,7 +72,7 @@
 
       <details id="excluded">
         <summary>Why was one of my columns excluded?</summary>
-        <p>Before predicting, Predit checks every column and leaves some out so the results stay honest. The sidebar lists each excluded column with its reason. The reasons are:</p>
+        <p>Before predicting, Predit checks every column and leaves some out so the results stay honest. The sidebar lists each excluded column with its reason under <strong>Details → Skipped</strong>, and an amber line names any column it left out because it gives the answer away. The reasons are:</p>
         <ul>
           <li><strong>Same value everywhere</strong>: a column with one value can't help.</li>
           <li><strong>Looks like an ID</strong>: a different value on almost every row, such as IDs, emails or row numbers. These let the model memorise rows instead of learning patterns.</li>
@@ -85,7 +85,7 @@
 
       <details id="trust">
         <summary>What does the trust score mean?</summary>
-        <p>Before writing anything, Predit hides the answer on some rows where you already know it, predicts them from the rest, and compares. It repeats this so every known row is tested once. The result is one label and one sentence, for example: "In a check on 240 rows with known answers, Predit ranked a converted lead above a non-converted one 76% of the time." 50% would be no better than chance; 100% would be perfect.</p>
+        <p>Before writing anything, Predit hides the answer on some rows where you already know it, predicts them from the rest, and compares. It repeats this so every known row is tested once. The result is one label and one sentence, for example: "Tested on 240 past rows: comparing a Yes with a No, it ranked the Yes higher 76 times in 100." 50 in 100 would be no better than a coin toss; 100 in 100 would be perfect.</p>
         <ul>
           <li><strong>Strong</strong>: reliable ranking on enough data. Use the rank and the chance with confidence.</li>
           <li><strong>Useful</strong>: clearly better than guessing. Good for prioritising.</li>

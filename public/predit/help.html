@@ -41,7 +41,7 @@
         <li><a href="#prepare">Prepare your sheet</a></li>
         <li><a href="#run">Run your first prediction</a></li>
         <li><a href="#results">Read the results</a></li>
-        <li><a href="#again">Run it again, or undo</a></li>
+        <li><a href="#again">Run it again, or remove the columns</a></li>
         <li><a href="#limits">Good to know</a></li>
       </ol>
     </nav>
@@ -70,40 +70,61 @@
     <h2 id="run">3. Run your first prediction</h2>
     <ol>
       <li>Click <strong>Extensions → Predit → Start</strong>. The sidebar opens on the right.</li>
-      <li>Choose the <strong>column to predict</strong>. Predit suggests the likeliest one and shows how many rows have an answer and how many it will fill in. Under the button it says where the results will go.</li>
-      <li>Click <strong>Predict</strong>. The first time, Predit downloads its model (about 85 MB, once) with a progress bar. Then it checks itself on your known rows, predicts the blank ones and writes the results. You can cancel at any time before it writes.</li>
-      <li>If the check says <strong>Not reliable</strong> or <strong>Too good to be true</strong>, Predit writes nothing yet and asks: <strong>Write anyway</strong> or <strong>Don't write</strong>.</li>
+      <li>In <strong>Predict this column</strong>, choose the column. Predit suggests the likeliest one and shows how many rows have an answer and how many it will fill in. For a column whose answers aren't Yes/No, <strong>Rank by chance of</strong> sets which answer the rank is about. Under the button it says where the results will go, next to an option that is off unless you tick it: <strong>Also fill the blanks in <em>Converted</em></strong> (see <a href="#fill">below</a>).</li>
+      <li>Click the blue <strong>Predict <em>N</em> blank rows</strong> button. The steps are shown as it goes: <em>Loading the model</em> (the first time this downloads about 85 MB, once), <em>Testing on rows with known answers</em>, <em>Predicting <em>N</em> rows</em> and <em>Writing</em>. <strong>Cancel</strong> stops it at any time before it writes.</li>
+      <li>If the check says <strong>Not reliable</strong> or <strong>Too good to be true</strong>, Predit writes nothing yet and asks: <strong>Write anyway</strong> or <strong>Don't write</strong>. After <strong>Write anyway</strong>, the sidebar does not show the call list or the forecast.</li>
+      <li>Don't sort, move or edit rows while Predit works. If you do, it writes nothing and says <strong>Your sheet changed</strong>; just run it again.</li>
     </ol>
 
     <h2 id="results">4. Read the results</h2>
-    <p>Predit adds its columns to the right of your data and fills them <strong>only on rows where your answer column is blank</strong>. Your own cells are never changed.</p>
+    <p>Predit adds its columns right after your data and fills them <strong>only on rows where your answer column is blank</strong>. With <a href="#fill">Also fill the blanks</a> unticked, it changes none of your cells. With it ticked, it also fills the empty cells of the column you predict, and later updates or removes only its own guesses there.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th scope="col">Column</th><th scope="col">What it means</th></tr></thead>
         <tbody>
-          <tr><td><strong>Predit: <em>Converted</em> chance</strong></td><td>How likely the row is to get the answer you care about (for a Yes/No column, Yes). Shown as a percentage when Predit's check shows its percentages hold up on enough rows, otherwise as High, Medium or Low.</td></tr>
-          <tr><td><strong>Predit: <em>Converted</em> rank</strong></td><td>1 is the row most likely to get that answer. Sort or filter by it to work down the list.</td></tr>
-          <tr><td><strong>Predit: <em>Stage</em></strong> (only for columns with 3 or more answers)</td><td>The most likely answer for the row. The chance column then shows how likely a chosen answer is, or how confident Predit is in its prediction.</td></tr>
+          <tr><td><strong>Predit: <em>Converted</em> chance</strong></td><td>How likely the row is to get the answer you care about (for a Yes/No column, Yes). For two answers that aren't Yes/No, the header names the answer, for example <strong>Predit: <em>Stage</em> chance of Won</strong>. Shown as a percentage when Predit's check shows its percentages hold up on enough rows, otherwise as High, Medium or Low.</td></tr>
+          <tr><td><strong>Predit: <em>Converted</em> rank</strong></td><td>1 is the row most likely to get that answer. Sort by it to work down the list (see below).</td></tr>
+          <tr><td><strong>Predit: <em>Stage</em></strong> (only for columns with 3 or more answers)</td><td>The most likely answer for the row. Next to it comes <strong>Predit: <em>Stage</em> chance of <em>answer</em></strong> when you picked an answer in <em>Rank by chance of</em>, or <strong>Predit: <em>Stage</em> confidence</strong> (how sure Predit is of its prediction), then the rank.</td></tr>
         </tbody>
       </table>
     </div>
     <p>In the sidebar you see:</p>
     <ul>
-      <li><strong>The trust score</strong>: one label and one sentence on how well Predit did on rows whose answer you already know. See <a href="support.html#trust">what the trust score means</a>.</li>
-      <li><strong>The most likely rows</strong>; click one to jump to it in the sheet.</li>
-      <li><strong>What Predit used and skipped</strong>: the columns it learned from and the ones it left out, each with a reason (see <a href="support.html#excluded">why a column was excluded</a>).</li>
+      <li><strong>✓ Filled in <em>N</em> blank rows</strong> (or <strong>Updated <em>N</em> rows</strong> on a re-run), with the letters of Predit's columns.</li>
+      <li>If you ticked <a href="#fill">Also fill the blanks</a>: one line saying how many empty cells it filled in your column, or why it didn't.</li>
+      <li><strong>A forecast</strong> for the rows it filled in.</li>
+      <li><strong>The trust score</strong>: one label (Strong, Useful, Weak, Not reliable, Too good to be true or Not tested) and one sentence on how well Predit did on rows whose answer you already know. See <a href="support.html#trust">what the trust score means</a>.</li>
+      <li>An amber line if Predit left out a column that gives the answer away.</li>
+      <li><strong>Call first</strong> (for a Yes/No column; otherwise <strong>Most likely <em>answer</em></strong> or <strong>Most confident</strong>): the top rows. Click one to select it in the sheet.</li>
+      <li><strong>What goes with Yes in your past rows</strong> (once you have at least 30 rows with an answer): each column on its own, patterns, not causes.</li>
+      <li><strong>Details</strong>: <em>Learned from</em> (the columns it used), <em>Skipped</em> (each column it left out, with the reason; see <a href="support.html#excluded">why a column was excluded</a>), <em>How it was tested</em> and <em>Notes</em>.</li>
     </ul>
-    <p>The first header cell of Predit's columns carries a note with the date, the trust label and the number of rows used.</p>
+    <p><strong>To work down the list</strong>, sort the whole table by the rank column: select your table from the header row down, Predit's columns too, choose <strong>Data → Sort range → Advanced range sorting options</strong>, tick <strong>Data has header row</strong> and sort by the rank column, <strong>A → Z</strong>. If your sheet already has a filter that doesn't include Predit's new columns, the sidebar warns you: sorting with that filter would put predictions next to the wrong rows. Remove the filter (<strong>Data → Remove filter</strong>), then select your whole table, Predit's columns too, and create it again.</p>
+    <p>The first header cell of Predit's columns carries a note with the date, the trust label and how it tested, the columns it learned from and the number of blank rows it filled in.</p>
 
-    <h2 id="again">5. Run it again, or undo</h2>
-    <p>When new rows arrive or more answers are filled in, open Predit and click <strong>Predict</strong> again. Predit updates its own columns and leaves everything else alone. Right after a run that added new columns, <strong>Undo</strong> removes them (if you typed anything else into them, Predit only clears what it wrote). You can also delete the columns whose header starts with "Predit:" at any time.</p>
+    <h3 id="fill">Fill the blanks in your own column (optional)</h3>
+    <p>Tick <strong>Also fill the blanks in <em>Converted</em></strong> under the Predict button to have Predit also write its predicted answer, such as <em>Yes</em>, into the empty cells of that column. The chance stays in Predit's own column, so you can still sort by it. The box is off unless you tick it; the sidebar remembers your choice until you close it, and ticks it for you when the column already holds Predit's guesses.</p>
+    <ul>
+      <li><strong>It uses your own spelling.</strong> Predit writes an answer the column already has, spelled the way your sheet spells it most often: TRUE/FALSE in a checkbox column, 1/0 in a 1/0 column.</li>
+      <li><strong>Which answer it writes.</strong> For two answers, the ranked one (such as Yes) where the chance is 50% or more, otherwise the other one. So two "Medium" rows can get different answers. For three or more answers, the answer in Predit's own answer column.</li>
+      <li><strong>Guesses have a light blue background and italic text</strong>, and each one carries a note: <em>Predit's guess: Yes</em>. The shading comes from one conditional formatting rule Predit adds to the column; the cells' own formatting isn't changed. Cells with an answer, cells with a note of yours, and cells that say "Open", "N/A" or the like, are left as they are.</li>
+      <li><strong>Guesses are real values.</strong> Formulas, filters, pivot tables and charts that use this column count them like your answers. A download (CSV) keeps the guesses but not the shading or the notes. If reports depend on this column, leave the box off and use Predit's own columns.</li>
+      <li><strong>When Predit doesn't fill the column</strong>: when the check says <em>Not reliable</em>, <em>Too good to be true</em> (even after <strong>Write anyway</strong>) or <em>Not tested</em>, when the column holds formulas, when cells are protected, or when the column's data validation wouldn't allow the answer. The sidebar says why in one line, and Predit's own columns are written as usual.</li>
+      <li><strong>On the next run</strong>, Predit knows its own guesses by their notes: a cell counts as a guess while it still holds exactly what Predit wrote and still has Predit's note. Guesses count as blank: Predit never learns from them, and it updates them. If you run Predit again with the box unticked, it clears its earlier guesses.</li>
+      <li><strong>A wrong guess:</strong> type the right answer over it. It is your answer from then on: Predit learns from it, leaves it alone and takes its note off.</li>
+      <li><strong>A guess that turned out right:</strong> delete its note to keep it as your answer. If you leave it, Predit keeps treating it as a guess: it may update it, and it clears it when you run Predit with the box unticked.</li>
+      <li><strong>Remove Predit's columns</strong> also clears the guesses that still hold what Predit wrote; cells you changed stay.</li>
+    </ul>
+
+    <h2 id="again">5. Run it again, or remove the columns</h2>
+    <p>When new rows arrive or more answers are filled in, open Predit and click the Predict button again. Predit updates its own columns (and its guesses, if you ticked <a href="#fill">Also fill the blanks</a>) and leaves everything else alone. Click <strong>Predict another column</strong> to start over with a different column. Right after a run, <strong>Remove Predit's columns</strong> (the button names the letters, for example I–J) takes them away again, with Predit's guesses in your column; if you typed anything else into them, Predit only clears what it wrote. Later, you can delete the columns whose header starts with "Predit:" by hand. If you used <a href="#fill">Also fill the blanks</a>, its guesses stay in your column then (they still count as guesses): to clear them too, run Predit once more and click <strong>Remove Predit's columns</strong>.</p>
 
     <h2 id="limits">6. Good to know</h2>
     <ul>
       <li><strong>No limits.</strong> Predit is free. It predicts every blank row, however many there are.</li>
-      <li><strong>Big sheets.</strong> On a computer with WebGPU, Predit learns from up to 2,000 rows with an answer (somewhat fewer without WebGPU), choosing a balanced sample when you have more.</li>
+      <li><strong>Big sheets.</strong> Predit learns from up to 2,000 rows with an answer when your browser offers WebGPU (your graphics chip), and up to 1,500 without it. It uses fewer on sheets with many columns (on WebGPU, roughly above a dozen used columns). On WebGPU it also learns from about 1,800 rows when there are many rows to predict: from roughly 1,300 blank rows on a 10-column sheet, and about half that at 12 columns. Big sheets stay fast this way. When you have more answered rows than that, it takes a representative sample.</li>
       <li><strong>Speed.</strong> Predit is fastest in Chrome or Edge with WebGPU. Without it Predit still works, more slowly. See <a href="support.html#slow">speed tips</a>.</li>
-      <li><strong>Columns.</strong> Up to 100 columns are used after exclusions.</li>
+      <li><strong>Answers and columns.</strong> At least 20 rows with an answer, at most 10 different answers, and up to 100 columns used after exclusions.</li>
       <li><strong>Privacy.</strong> The model runs in your browser; your sheet data is never sent to us. See the <a href="privacy.html">Privacy Policy</a>.</li>
     </ul>
     <p>Still stuck? <a href="support.html">Contact support</a>.</p>
