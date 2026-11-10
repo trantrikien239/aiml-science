@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predit – free predictions for Google Sheets™</title>
+<meta name="description" content="Predit is a free add-on for Google Sheets™. Pick a column such as Converted or Churned and Predit predicts it for every blank row, with a chance, a rank and an honest trust score. The model runs in your browser.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Predit home">
+      <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><rect x="4" y="4" width="120" height="120" rx="28" fill="url(#lg)"/><rect x="24" y="72" width="20" height="32" rx="6" fill="#fff"/><rect x="54" y="54" width="20" height="50" rx="6" fill="#fff"/><rect x="84" y="46" width="20" height="58" rx="6" fill="#fff" fill-opacity=".45"/><circle cx="94" cy="28" r="10" fill="#fff"/></svg>
+      Predit
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#privacy">Your data</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Free add-on for Google Sheets™</p>
+      <h1>Predict the blanks in your sheet.</h1>
+      <p class="lead">Pick a column such as <em>Converted</em> or <em>Churned</em>. Predit learns from the rows where you know the answer and predicts it for every row where it is still blank, with a chance, a rank, and one plain sentence on how far to trust it.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="help.html#install">Get Predit – it's free</a>
+        <a class="btn btn-secondary" href="#privacy">Where your data goes</a>
+      </div>
+      <ul class="facts" aria-label="At a glance">
+        <li>Free, no sign-up, no limits</li>
+        <li>Runs in your browser</li>
+        <li>Never changes your own cells</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section aria-labelledby="what">
+      <h2 id="what">What Predit adds to your sheet</h2>
+      <div class="sheet-demo">
+        <table>
+          <caption>Illustration with made-up values. Predit adds the shaded columns at the right of your data and fills them only on rows where <em>Converted</em> is blank.</caption>
+          <thead>
+            <tr><th scope="col">Company</th><th scope="col">Site visits</th><th scope="col">Calls</th><th scope="col">Converted</th><th scope="col" class="new">Predit: Converted chance</th><th scope="col" class="new">Predit: Converted rank</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Alder &amp; Co</td><td>4</td><td>6</td><td>Yes</td><td class="new"></td><td class="new"></td></tr>
+            <tr><td>Brightline</td><td>1</td><td>2</td><td>No</td><td class="new"></td><td class="new"></td></tr>
+            <tr><td>Cobalt Labs</td><td>5</td><td>7</td><td></td><td class="new">82%</td><td class="new">1</td></tr>
+            <tr><td>Dunmore</td><td>3</td><td>3</td><td></td><td class="new">47%</td><td class="new">2</td></tr>
+            <tr><td>Elmwood</td><td>0</td><td>1</td><td></td><td class="new">9%</td><td class="new">3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid spaced">
+        <div class="card"><h3>A list you can work down</h3><p>Every blank row gets a chance and a rank, so your team can start with the leads most likely to say yes.</p></div>
+        <div class="card"><h3>An honest trust score</h3><p>Predit first tests itself on rows where you already know the answer and tells you, in one sentence, how well it did. If the result is poor or suspiciously perfect, it asks before writing anything.</p></div>
+        <div class="card"><h3>Leak checks</h3><p>Columns that give the answer away, such as a field filled in only after a deal closes, are left out, so the score isn't flattering by accident.</p></div>
+      </div>
+    </section>
+
+    <section id="how" aria-labelledby="how-h">
+      <h2 id="how-h">How it works</h2>
+      <ol class="steps">
+        <li><h3>Open Predit</h3><p>In your spreadsheet choose <strong>Extensions → Predit → Start</strong>. A sidebar opens on the right.</p></li>
+        <li><h3>Pick the column</h3><p>Choose the column with the answers you know, for example <em>Converted</em>. Predit shows how many rows it will fill in and where the new columns will go.</p></li>
+        <li><h3>Click Predict</h3><p>Predit checks itself, fills in the blank rows and shows the trust score and the most likely rows. <strong>Undo</strong> removes what it added.</p></li>
+      </ol>
+      <p class="muted">The first run downloads the model once, about 85 MB. Later runs start from your browser's cache. <a href="help.html">Read the getting-started guide</a>.</p>
+    </section>
+
+    <section id="privacy" aria-labelledby="privacy-h">
+      <h2 id="privacy-h">Where your data goes</h2>
+      <div class="prose">
+        <p>Predit has no server of its own. Your spreadsheet is read and written by Predit's Apps Script code, which runs on Google's servers under your account, and the predictions are computed in your browser. <strong>Your sheet data only travels between Google and your browser. No request to anyone else contains it, and we never receive it.</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">What</th><th scope="col">Where it happens</th></tr></thead>
+            <tbody>
+              <tr><td>Reading the sheet you have open, and writing Predit's columns</td><td>Predit's Apps Script code, on Google's servers, only while you use Predit</td></tr>
+              <tr><td>Learning from your rows and predicting the blanks</td><td>The Predit sidebar, in your browser's memory, on your computer</td></tr>
+              <tr><td>One-time download of the model and its runtime (no data about you)</td><td>From <code>huggingface.co</code> and <code>cdn.jsdelivr.net</code>, then kept in your browser's cache</td></tr>
+              <tr><td>Analytics, tracking, accounts, ads</td><td>None</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Predit asks Google for only two permissions: to see and edit the spreadsheet you use it in, and to show its sidebar. It cannot see your other files, your email or your contacts.</p>
+        <div class="callout">
+          <p>Predit's use of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+        </div>
+        <p>All the details are in the <a href="privacy.html">Privacy Policy</a>.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="req-h">
+      <h2 id="req-h">What you need</h2>
+      <div class="grid">
+        <div class="card"><h3>Google Sheets™ on a computer</h3><p>Add-on sidebars are available in Sheets in a desktop browser.</p></div>
+        <div class="card"><h3>A current browser</h3><p>Chrome or Edge with WebGPU is fastest. Other browsers work too, more slowly.</p></div>
+        <div class="card"><h3>Some known answers</h3><p>At least 20 rows with the answer filled in. A few hundred make the trust score much more reliable.</p></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <ul>
+      <li><a href="help.html">Help</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="licenses.html">Licenses</a></li>
+    </ul>
+    <p>Predit is made by Kien Tran, Viet Nam. Contact: <a href="mailto:trantrikien239@gmail.com">trantrikien239@gmail.com</a>.</p>
+    <p>Predit is not made or endorsed by Google. Google Sheets™ and Google Workspace™ are trademarks of Google LLC.</p>
+  </div>
+</footer>
+</body>
+</html>

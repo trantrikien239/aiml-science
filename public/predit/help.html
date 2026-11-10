@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started – Predit</title>
+<meta name="description" content="Install Predit, prepare your sheet and run your first prediction in Google Sheets™.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Predit home">
+      <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><rect x="4" y="4" width="120" height="120" rx="28" fill="url(#lg)"/><rect x="24" y="72" width="20" height="32" rx="6" fill="#fff"/><rect x="54" y="54" width="20" height="50" rx="6" fill="#fff"/><rect x="84" y="46" width="20" height="58" rx="6" fill="#fff" fill-opacity=".45"/><circle cx="94" cy="28" r="10" fill="#fff"/></svg>
+      Predit
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html#how">How it works</a></li>
+        <li><a href="index.html#privacy">Your data</a></li>
+        <li><a href="help.html" aria-current="page">Help</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap prose">
+    <div class="page-head">
+      <h1>Getting started</h1>
+      <p>From install to your first ranked list in a few minutes.</p>
+    </div>
+
+    <nav class="toc" aria-label="Contents">
+      <ol>
+        <li><a href="#install">Install Predit</a></li>
+        <li><a href="#prepare">Prepare your sheet</a></li>
+        <li><a href="#run">Run your first prediction</a></li>
+        <li><a href="#results">Read the results</a></li>
+        <li><a href="#again">Run it again, or undo</a></li>
+        <li><a href="#limits">Good to know</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="install">1. Install Predit</h2>
+    <ol>
+      <li>Open a spreadsheet in Google Sheets™ on a computer.</li>
+      <li>Click <strong>Extensions → Add-ons → Get add-ons</strong> and search for <strong>Predit</strong>, or open the <a href="help.html#install">Predit Marketplace page</a>.</li>
+      <li>Click <strong>Install</strong> and review the two permissions Google shows you. They are explained in the <a href="privacy.html#scopes">Privacy Policy</a>.</li>
+    </ol>
+    <p>Predit is free and needs no account. It never opens on its own: you start it from the Extensions menu when you need it.</p>
+
+    <h2 id="prepare">2. Prepare your sheet</h2>
+    <p>Predit works on one table per sheet tab:</p>
+    <ul>
+      <li><strong>A header row with the column names.</strong> It is usually row 1; a title above it is fine.</li>
+      <li><strong>One row per record</strong>, for example one lead, deal or customer.</li>
+      <li><strong>A column with the answer you want to predict</strong>, such as <em>Converted</em> (Yes/No) or <em>Churned</em> (TRUE/FALSE). Fill it in where you know the answer and leave it <strong>blank</strong> where you want a prediction. "N/A", "-", "?", "TBD", "Pending", "Open" and similar count as not answered yet.</li>
+      <li><strong>Other columns describe each row</strong>: numbers, categories, dates. These are what Predit learns from.</li>
+    </ul>
+    <p>You need at least 20 rows with a known answer, including at least 5 of the rarer answer. A few hundred make the trust check much more reliable. The answer column can have up to 10 different answers.</p>
+    <div class="callout">
+      <p><strong>Only use columns you'd know before the outcome.</strong> A field that is filled in only after a deal closes "predicts" the past perfectly and the future not at all. Predit spots most such columns and leaves them out, but you know your data best.</p>
+    </div>
+
+    <h2 id="run">3. Run your first prediction</h2>
+    <ol>
+      <li>Click <strong>Extensions → Predit → Start</strong>. The sidebar opens on the right.</li>
+      <li>Choose the <strong>column to predict</strong>. Predit suggests the likeliest one and shows how many rows have an answer and how many it will fill in. Under the button it says where the results will go.</li>
+      <li>Click <strong>Predict</strong>. The first time, Predit downloads its model (about 85 MB, once) with a progress bar. Then it checks itself on your known rows, predicts the blank ones and writes the results. You can cancel at any time before it writes.</li>
+      <li>If the check says <strong>Not reliable</strong> or <strong>Too good to be true</strong>, Predit writes nothing yet and asks: <strong>Write anyway</strong> or <strong>Don't write</strong>.</li>
+    </ol>
+
+    <h2 id="results">4. Read the results</h2>
+    <p>Predit adds its columns to the right of your data and fills them <strong>only on rows where your answer column is blank</strong>. Your own cells are never changed.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Column</th><th scope="col">What it means</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Predit: <em>Converted</em> chance</strong></td><td>How likely the row is to get the answer you care about (for a Yes/No column, Yes). Shown as a percentage when Predit's check shows its percentages hold up on enough rows, otherwise as High, Medium or Low.</td></tr>
+          <tr><td><strong>Predit: <em>Converted</em> rank</strong></td><td>1 is the row most likely to get that answer. Sort or filter by it to work down the list.</td></tr>
+          <tr><td><strong>Predit: <em>Stage</em></strong> (only for columns with 3 or more answers)</td><td>The most likely answer for the row. The chance column then shows how likely a chosen answer is, or how confident Predit is in its prediction.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>In the sidebar you see:</p>
+    <ul>
+      <li><strong>The trust score</strong>: one label and one sentence on how well Predit did on rows whose answer you already know. See <a href="support.html#trust">what the trust score means</a>.</li>
+      <li><strong>The most likely rows</strong>; click one to jump to it in the sheet.</li>
+      <li><strong>What Predit used and skipped</strong>: the columns it learned from and the ones it left out, each with a reason (see <a href="support.html#excluded">why a column was excluded</a>).</li>
+    </ul>
+    <p>The first header cell of Predit's columns carries a note with the date, the trust label and the number of rows used.</p>
+
+    <h2 id="again">5. Run it again, or undo</h2>
+    <p>When new rows arrive or more answers are filled in, open Predit and click <strong>Predict</strong> again. Predit updates its own columns and leaves everything else alone. Right after a run that added new columns, <strong>Undo</strong> removes them (if you typed anything else into them, Predit only clears what it wrote). You can also delete the columns whose header starts with "Predit:" at any time.</p>
+
+    <h2 id="limits">6. Good to know</h2>
+    <ul>
+      <li><strong>No limits.</strong> Predit is free. It predicts every blank row, however many there are.</li>
+      <li><strong>Big sheets.</strong> On a computer with WebGPU, Predit learns from up to 2,000 rows with an answer (somewhat fewer without WebGPU), choosing a balanced sample when you have more.</li>
+      <li><strong>Speed.</strong> Predit is fastest in Chrome or Edge with WebGPU. Without it Predit still works, more slowly. See <a href="support.html#slow">speed tips</a>.</li>
+      <li><strong>Columns.</strong> Up to 100 columns are used after exclusions.</li>
+      <li><strong>Privacy.</strong> The model runs in your browser; your sheet data is never sent to us. See the <a href="privacy.html">Privacy Policy</a>.</li>
+    </ul>
+    <p>Still stuck? <a href="support.html">Contact support</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <ul>
+      <li><a href="help.html" aria-current="page">Help</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="licenses.html">Licenses</a></li>
+    </ul>
+    <p>Predit is made by Kien Tran, Viet Nam. Contact: <a href="mailto:trantrikien239@gmail.com">trantrikien239@gmail.com</a>.</p>
+    <p>Predit is not made or endorsed by Google. Google Sheets™ and Google Workspace™ are trademarks of Google LLC.</p>
+  </div>
+</footer>
+</body>
+</html>

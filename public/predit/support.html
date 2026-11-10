@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support – Predit</title>
+<meta name="description" content="Contact Predit support and answers to common questions.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Predit home">
+      <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><rect x="4" y="4" width="120" height="120" rx="28" fill="url(#lg)"/><rect x="24" y="72" width="20" height="32" rx="6" fill="#fff"/><rect x="54" y="54" width="20" height="50" rx="6" fill="#fff"/><rect x="84" y="46" width="20" height="58" rx="6" fill="#fff" fill-opacity=".45"/><circle cx="94" cy="28" r="10" fill="#fff"/></svg>
+      Predit
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html#how">How it works</a></li>
+        <li><a href="index.html#privacy">Your data</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap prose">
+    <div class="page-head">
+      <h1>Support</h1>
+      <p>We're happy to help. Most questions are answered below; if not, write to us.</p>
+    </div>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact us</h2>
+      <p>Email <a href="mailto:trantrikien239@gmail.com">trantrikien239@gmail.com</a>. We answer within 5 business days.</p>
+      <p>To help us help you, please include:</p>
+      <ul>
+        <li>what you clicked and the exact message Predit showed;</li>
+        <li>your browser and operating system (for example, Chrome on Windows 11);</li>
+        <li>the number of rows and columns in the sheet, and the column you tried to predict.</li>
+      </ul>
+      <p><strong>Please don't send real customer data.</strong> If we need an example, a copy with made-up values is enough.</p>
+      <h3 id="report">Report a problem</h3>
+      <p>Found a bug? Email <a href="mailto:trantrikien239@gmail.com?subject=Predit%20problem%20report">trantrikien239@gmail.com</a> with the subject "Predit problem report" and the details above.</p>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Frequently asked questions</h2>
+
+      <details id="slow">
+        <summary>Predit is slow, or says it's running without WebGPU. Why?</summary>
+        <p>Predit runs the model on your computer. It uses your graphics processor through <strong>WebGPU</strong> when your browser offers it, and falls back to your main processor (<strong>WebAssembly</strong>) when it doesn't. Both give the same kind of results; the fallback is just slower.</p>
+        <p>WebGPU is available in current Chrome and Edge on Windows, macOS and ChromeOS. It may be missing on Linux, on older Macs, in some company-managed browsers, or when graphics drivers are out of date. To speed things up:</p>
+        <ul>
+          <li>use the latest Chrome or Edge, and update your graphics drivers;</li>
+          <li>close other heavy tabs while Predit runs;</li>
+          <li>on big sheets Predit learns from a balanced sample of up to 2,000 rows with an answer (fewer without WebGPU) and still predicts every blank row. That is expected and keeps runs manageable on any computer.</li>
+        </ul>
+      </details>
+
+      <details id="download">
+        <summary>Why does the first run download files, and how big are they?</summary>
+        <p>The first time you run Predit, your browser downloads the prediction model and the engine that runs it: about 85 MB in total, once. A progress bar shows how far it has got. The model comes from <code>huggingface.co</code> and the engine from <code>cdn.jsdelivr.net</code>. These downloads contain no data about you; your sheet is never uploaded.</p>
+        <p>After that, the files are kept in your browser's cache, so later runs start quickly, in any spreadsheet. The download can happen again if you clear your browser data, use a private window, use a different browser or computer, or after a Predit update changes the model.</p>
+        <p>If your computer is very low on disk space, Predit keeps the files in memory for the session instead and downloads them again next time.</p>
+      </details>
+
+      <details id="excluded">
+        <summary>Why was one of my columns excluded?</summary>
+        <p>Before predicting, Predit checks every column and leaves some out so the results stay honest. The sidebar lists each excluded column with its reason. The reasons are:</p>
+        <ul>
+          <li><strong>Same value everywhere</strong>: a column with one value can't help.</li>
+          <li><strong>Looks like an ID</strong>: a different value on almost every row, such as IDs, emails or row numbers. These let the model memorise rows instead of learning patterns.</li>
+          <li><strong>Free text</strong>: long notes or too many different values to use as categories.</li>
+          <li><strong>Gives the answer away</strong>: a column that predicts the answer almost perfectly, or one that is only filled in once the answer is known (for example a "Close reason" filled in only for finished deals). Using it would make the check look much better than real predictions will be.</li>
+          <li><strong>Calculated from the answer</strong>: a formula that refers to the column you're predicting.</li>
+        </ul>
+        <p>If you think a column was excluded by mistake, check whether it is really known <em>before</em> the outcome. If it is and Predit still leaves it out, <a href="#contact">tell us</a>: we use these reports to tune the checks.</p>
+      </details>
+
+      <details id="trust">
+        <summary>What does the trust score mean?</summary>
+        <p>Before writing anything, Predit hides the answer on some rows where you already know it, predicts them from the rest, and compares. It repeats this so every known row is tested once. The result is one label and one sentence, for example: "In a check on 240 rows with known answers, Predit ranked a converted lead above a non-converted one 76% of the time." 50% would be no better than chance; 100% would be perfect.</p>
+        <ul>
+          <li><strong>Strong</strong>: reliable ranking on enough data. Use the rank and the chance with confidence.</li>
+          <li><strong>Useful</strong>: clearly better than guessing. Good for prioritising.</li>
+          <li><strong>Weak</strong>: only slightly better than guessing. Use the rank, not the yes/no.</li>
+          <li><strong>Not reliable</strong>: no better than always guessing the most common answer. Don't act on these predictions.</li>
+          <li><strong>Too good to be true</strong>: some column gave the answer away. Predit leaves it out and checks again.</li>
+          <li><strong>Not tested</strong>: fewer than 20 rows with an answer, or fewer than 5 of the rarer answer, so there is no way yet to tell how good the predictions are. Fill in more rows.</li>
+        </ul>
+        <p>With fewer than 100 known rows the label is capped at <em>Useful</em>, because a small check has a wide margin of error. Chances are shown as High/Medium/Low unless the check shows they are well calibrated on enough rows.</p>
+      </details>
+
+
+
+      <details id="uninstall">
+        <summary>How do I uninstall Predit?</summary>
+        <ol>
+          <li>Open any spreadsheet in Google Sheets.</li>
+          <li>Click <strong>Extensions → Add-ons → Manage add-ons</strong>.</li>
+          <li>Next to Predit, click <strong>Options</strong> (the three dots), then <strong>Uninstall</strong>.</li>
+        </ol>
+        <p>To also remove Predit's permission from your Google Account, follow Google's guide to <a href="https://support.google.com/accounts/answer/13533235">managing third-party connections</a>. The columns Predit wrote stay in your sheets until you delete them.</p>
+      </details>
+
+      <details id="data">
+        <summary>Does my sheet data leave my computer?</summary>
+        <p>No. Your sheet data is read by Predit's Apps Script code on Google's servers (that is how every Sheets add-on reads cells) and processed by the model in your browser. It is never sent to us or to anyone else, and Predit doesn't ask for your email address. Details: <a href="index.html#privacy">where your data goes</a> and the <a href="privacy.html">Privacy Policy</a>.</p>
+      </details>
+
+      <details id="accounts">
+        <summary>The sidebar stays blank, or a button does nothing.</summary>
+        <p>Google Sheets add-ons can misbehave when you're signed in to several Google accounts in the same browser window. Open the sheet in a window (or browser profile) where only one Google account is signed in, then try again.</p>
+      </details>
+
+      <details id="admin">
+        <summary>I can't install Predit with my work account.</summary>
+        <p>Your Google Workspace administrator may only allow approved Marketplace apps. Ask them to allow Predit in the Google Admin console; they can find it on the <a href="help.html#install">Predit Marketplace page</a>.</p>
+      </details>
+
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <ul>
+      <li><a href="help.html">Help</a></li>
+      <li><a href="support.html" aria-current="page">Support</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="licenses.html">Licenses</a></li>
+    </ul>
+    <p>Predit is made by Kien Tran, Viet Nam. Contact: <a href="mailto:trantrikien239@gmail.com">trantrikien239@gmail.com</a>.</p>
+    <p>Predit is not made or endorsed by Google. Google Sheets™ and Google Workspace™ are trademarks of Google LLC.</p>
+  </div>
+</footer>
+</body>
+</html>
